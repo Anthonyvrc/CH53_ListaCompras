@@ -8,6 +8,7 @@ const cuerpoTabla = tablaListaCompras.getElementsByTagName("tbody").item(0);
 const contadorProductos= document.getElementById("contadorProductos");
 const productosTotal= document.getElementById("productosTotal");
 const precioTotal= document.getElementById("precioTotal");
+const btnClear= document.getElementById("btnClear");
 
 
 
@@ -117,7 +118,7 @@ let resumen = {
                 txtName.focus();
 }//if is valid
 
-});//btn Agragar
+});//btn Agregar
 
 window.addEventListener("load", function (event){
     event.preventDefault();
@@ -155,4 +156,23 @@ cont = resumen.cont;
 })//window.addEvenlistener load
 
 
+//Agregar la funcionalidad del boton limpiar todo (resumen,campos,tabla,alerta)
 
+
+btnClear.addEventListener("click", function (event){
+    event.preventDefault();
+
+    txtName.style.border="";
+    alertValidacionesTexto.innerHTML="";
+    alertValidaciones.style.display="none";
+txtNumber.style.border="";
+totalEnProductos.innerText=""
+productosTotal.innerHTML=""
+precioTotal.innerHTML=""
+cuerpoTabla.innerHTML=""
+contadorProductos.innerText="0"
+localStorage.removeItem("resumen");
+localStorage.removeItem("datos");
+window.location.reload();
+
+})
